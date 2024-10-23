@@ -53,7 +53,7 @@ fetch(`http://localhost:3000/roster/${route.params.id}`)
 .player-card {
     text-align: center;  
     margin: 20px;  
-    height: 100vh;
+    /* height: 150vh; */
 }
 
 .player-info {
