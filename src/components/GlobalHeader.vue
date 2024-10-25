@@ -10,7 +10,8 @@
     <nav>
       <ul>
         <li><RouterLink to="/ARCspeech">Future Athletes</RouterLink></li>
-
+        <li><RouterLink to="/CollegeHome">College Home</RouterLink></li>
+        <li><RouterLink to="/CollegeSearch">College Search</RouterLink></li>
       </ul>
     </nav>
   </header>

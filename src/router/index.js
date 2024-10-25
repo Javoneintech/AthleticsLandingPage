@@ -7,6 +7,9 @@ import LoginView from '@/views/LoginView.vue';
 import IndividualPlayerView from '@/views/IndividualPlayerView.vue';
 import RegistrationView from '@/views/RegistrationView.vue';
 import ARCspeechView from '@/views/ARCspeechView.vue';
+import CollegeHomeView from '@/views/CollegeHomeView.vue';
+import CollegeSearchView from '@/views/CollegeSearchView.vue';
+import CollegeSingleView from '@/views/CollegeSingleView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +53,21 @@ const router = createRouter({
       path: "/ARCspeech",
       name: "ARCspeech",
       component: ARCspeechView,
+    },
+    {
+      path: "/collegehome",
+      name: "CollegeHome",
+      component: CollegeHomeView,
+    },
+    {
+      path: "/collegesearch",
+      name: "CollegeSearch",
+      component: CollegeSearchView,
+    },
+    {
+      path: "/CollegeSingleView",
+      name: "CollegeSingleView",
+      component: CollegeSingleView,
     },
 
     // ARCspeechView,

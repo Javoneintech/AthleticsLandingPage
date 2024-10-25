@@ -18,7 +18,7 @@
     <p>The NCAA's NIL policy, enacted in July 2021, was a response to a unanimous Supreme Court ruling in June 2021 that recognized college athletes' right to profit from their personal brand.</p>
     
     <h3>Financial Impact</h3>
-    <p>The financial impact of NIL deals varies widely among college athletes. On average, student athletes earn between <strong>$1,000 to $10,000</strong> from NIL deals. However, some top-level athletes have earned significantly more. <strong>Estimated total NIL earnings for the year: $600 million.</strong></p>
+    <p>The financial impact of NIL deals varies widely among college athletes. On average, student athletes earn between <strong>$1,000 to $10,000</strong> from NIL deals. However, some top-level athletes have earned significantly more. <strong>Estimated total NIL earnings for the year: $4 Billion.</strong></p>
     
     <h3>Notable Cases</h3>
     <ol>

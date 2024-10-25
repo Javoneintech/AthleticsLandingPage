@@ -1,5 +1,5 @@
 <script setup>
-import WeatherWidget from '@/components/WeatherWidget.vue';
+
 import { ref } from 'vue';
 
 const newsData = ref([]);
@@ -30,7 +30,6 @@ fetch('http://localhost:3000/news')
       Let's achieve greatness together!
     </p>
   </div>
-  <weather-widget/>
   <div class="flex-container">
      <v-carousel v-model="currentIndex">
       <v-carousel-item v-for="news in newsData" :key="news.url">
@@ -53,7 +52,7 @@ fetch('http://localhost:3000/news')
     display: flex;
     align-items: center; 
     justify-content: center;
-    height: 200vh; 
+    height: 100vh; 
     width: 100%; 
     background-image: url('src/assets/GRC-BACKGROUND.png');  
     background-size: cover;  

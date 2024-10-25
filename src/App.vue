@@ -9,7 +9,7 @@ import GlobalHeader from './components/GlobalHeader.vue'; // Import the new head
 <template>
   <div id="app">
     <GlobalHeader /> 
-    <Header v-if="$route.name !== 'login' && $route.name !== 'register' && $route.name !== 'ARCspeech'">
+    <Header v-if="$route.name !== 'login' && $route.name !== 'register' && $route.name !== 'ARCspeech' && $route.name !== 'CollegeSearch' && $route.name !== 'CollegeHome' && $route.name !== 'CollegeSingleView'">
       <RouterLink to="/home"><img class="header-cardinal-head" src="@/assets/cardinal-head.png" alt=""></RouterLink>
       <h1 class="header-title">GRC HOOPS</h1>
       <div class="header-link">
@@ -27,7 +27,7 @@ import GlobalHeader from './components/GlobalHeader.vue'; // Import the new head
       <RouterView/> 
     </main>
 
-    <footer class="footer" v-if="$route.name !== 'login' && $route.name !== 'register' && $route.name !== 'ARCspeech'">
+    <footer class="footer" v-if="$route.name !== 'login' && $route.name !== 'register' && $route.name !== 'ARCspeech' && $route.name !== 'CollegeSearch' && $route.name !== 'CollegeHome' && $route.name !== 'CollegeSingleView'">
       <h1>George Rogers Clark High School</h1>
       <p>2745 Boonesboro Rd, Winchester, KY 40391</p>
       <p>Phone: (859) 744-4545</p>

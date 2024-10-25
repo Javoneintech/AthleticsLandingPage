@@ -4,6 +4,16 @@ import {useRoute} from 'vue-router'
 
 const roster = ref([]);
 const route = useRoute();
+const showStatsInput = ref(false); // Controls visibility of input container
+const newStats = ref({ // Object to hold new stats
+    points: 0,
+    rebounds: 0,
+    assists: 0,
+    steals: 0,
+    blocks: 0,
+    threes: 0
+});
+
 fetch(`http://localhost:3000/roster/${route.params.id}`)
     .then(response => {
         console.log('Raw response:', response); 
@@ -16,6 +26,48 @@ fetch(`http://localhost:3000/roster/${route.params.id}`)
     .catch(error => {
         console.error('Error fetching roster:', error); 
     });
+
+const addStats = () => {
+    showStatsInput.value = !showStatsInput.value; // Toggle visibility
+};
+
+const submitStats = () => {
+    console.log('Submitting stats:', newStats.value); // Debugging line
+    fetch(`http://localhost:3000/roster/${route.params.id}/stats`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            newStats: newStats.value,
+            currentStats: roster.value[0],
+        }) // Sending new stats
+    })
+    .then(response => {
+        console.log('Response status:', response.status); // Log response status
+        return response.text().then(text => {
+            if (!response.ok) {
+                throw new Error(`Network response was not ok: ${text}`);
+            }
+            return JSON.parse(text); // Parse the text as JSON
+        });
+    })
+    .then(data => {
+        roster.value[0].points = data[0].points;
+        roster.value[0].assists = data[0].assists;
+        roster.value[0].rebounds = data[0].rebounds;
+        roster.value[0].blocks = data[0].blocks;
+        roster.value[0].steals = data[0].steals;
+        roster.value[0].threes = data[0].threes;
+
+        // Reset the input fields after submission
+        newStats.value = { points: 0, rebounds: 0, assists: 0, steals: 0, blocks: 0, threes: 0 };
+        showStatsInput.value = false; // Hide the input container after submission
+    })
+    .catch(error => {
+        console.error('Error submitting stats:', error);
+    });
+};
 
 </script>
 
@@ -35,8 +87,38 @@ fetch(`http://localhost:3000/roster/${route.params.id}`)
                     <p>Assists: {{ player.assists }}</p> 
                     <p>Steals: {{ player.steals }}</p>
                     <p>Blocks: {{ player.blocks }}</p>
-                    <p>Threes: {{ player.threes }}</p>
+                    <p>3pg: {{ player.threes }}</p>
                 </div>
+                <button @click="addStats">Add Stats</button>
+                <div v-if="showStatsInput"> <!-- Container for input fields -->
+                    <h3>Add Player Stats</h3>
+                    <label>
+                        Points:
+                        <input type="number" placeholder="Points" v-model="newStats.points" />
+                    </label>
+                    <label>
+                        Rebounds:
+                        <input type="number" placeholder="Rebounds" v-model="newStats.rebounds" />
+                    </label>
+                    <label>
+                        Assists:
+                        <input type="number" placeholder="Assists" v-model="newStats.assists" />
+                    </label>
+                    <label>
+                        Steals:
+                        <input type="number" placeholder="Steals" v-model="newStats.steals" />
+                    </label>
+                    <label>
+                        Blocks:
+                        <input type="number" placeholder="Blocks" v-model="newStats.blocks" />
+                    </label>
+                    <label>
+                        Threes made:
+                        <input type="number" placeholder="Threes" v-model="newStats.threes" />
+                    </label>
+                    <button @click="submitStats">Submit</button>
+                </div>
+
                 <p class="about-me">
                     I am a dedicated and passionate basketball player at GRC. 
                     I strive to improve my skills every day and work hard to support my team. 
